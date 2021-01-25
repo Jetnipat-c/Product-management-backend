@@ -1,0 +1,107 @@
+### test api
+GET http://localhost:3000
+
+
+######################################## PRODUCT ###########################################
+GET {{apiUrl}}/product/stock
+
+###
+GET {{apiUrl}}/product/stock/2
+
+### 
+POST {{apiUrl}}/product/createproduct
+Content-Type: application/json
+
+{
+    "product_size": "20 x 20 cm",
+    "product_width": "100 m",
+    "product_color": "ดำ"
+    
+}
+
+### 
+PATCH {{apiUrl}}/product/updateproduct/42
+Content-Type: application/json
+
+{
+    "product_size": "20 x 30 cm",
+    "product_width": "700 m",
+    "product_color": "pink"
+}
+
+###
+DELETE {{apiUrl}}/product/deleteproduct
+Content-Type: application/json
+
+{
+    "product_size": "999 x 50 inc",
+    "product_width": "500 cm",
+    "product_color": "red"
+    
+}
+
+###
+PATCH {{apiUrl}}/product/updatework
+Content-Type: application/json
+
+{   
+    "product_id": 1,
+    "work_id": 2
+    
+}
+
+######################################## STATUS ###########################################
+
+GET {{apiUrl}}/status/showstatus
+
+###
+POST {{apiUrl}}/status/createstatus
+Content-Type: application/json
+
+{
+    "status_name": "เส็จสิ้นดำเนินการ",
+    "status_description": "เส็จสิ้นดำเนินการ"
+
+}
+
+###
+PATCH  {{apiUrl}}/status/updatestatus
+
+Content-Type: application/json
+
+{
+    "status_name": "เส็จสิ้นการดำเนินการ",
+    "status_description": "จบกระบวนการทำ"
+    
+}
+###
+DELETE {{apiUrl}}/status/deletestatus
+Content-Type: application/json
+
+{
+    "status_name": "เส็จสิ้นการดำเนินการ"
+    
+}
+
+######################################## WORK ###########################################
+GET {{apiUrl}}/work/showwork
+
+###
+GET {{apiUrl}}/work/showwork/9
+
+###
+POST {{apiUrl}}/work/creatework
+Content-Type: application/json
+
+{
+    "work_name": "ขั้นตอนการทำที่ 10"
+    
+}
+###
+DELETE {{apiUrl}}/work/deletework
+Content-Type: application/json
+
+{
+    "work_name": "เส็จสิ้นการดำเนินการ"
+    
+}
