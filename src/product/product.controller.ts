@@ -80,7 +80,7 @@ export class ProductController {
     @Get('/qr_code/:filename')
     async get_qr_code(@Res() res, @Param('filename') filename){
         console.log(filename)
-        return res.download("D:/TMP Project/Tracking-System-with-QR-code---Backend/images/product/" + filename)
+        return res.download("D:/TMP Project/product-management-backend/images/product/" + filename)
     }
 
 }
