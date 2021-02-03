@@ -129,8 +129,9 @@ export class AuthService {
     if(user && bcrypt.compareSync(password, user.password)) {
       const { password, ...result } = user;
       console.log("Step 5 - 3 call createToken")
-      await this.createToken(result)
-      return { message: 'SignInWith Username succeed'}
+      //await this.createToken(result)
+      return await this.createToken(result)
+      //return { message: 'SignInWith Username succeed'}
     }
     else {
       throw new UnauthorizedException()
@@ -158,6 +159,10 @@ export class AuthService {
     const token = await this.jwtService.sign(payload);
     console.log("Step 8 send payload, token to create token")
     await this.usersService.add_token(payload,token)
+    return {
+      access_token: token,
+      payload,
+    };
   }
   // ###################################################################### Signout ######################################################################
   async signout(token: string){
