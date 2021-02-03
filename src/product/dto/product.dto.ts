@@ -3,7 +3,9 @@ export class ProductDto {
     product_size: string;
     product_width: string;
     product_color: string;
-    //product_amount: number;
-    //work_id: number;
+    receipt_code: string;
+    price: string;
+    note: string;
+    company: string;
     photo: string
 }
