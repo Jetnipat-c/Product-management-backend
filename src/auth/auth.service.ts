@@ -105,8 +105,9 @@ export class AuthService {
     if(user && bcrypt.compareSync(password, user.password)) {
       const { password, ...result } = user;
       console.log("Step 5 - 3 call createToken")
-      await this.createToken(result)
-      return { message: 'SignInWith Email succeed'}
+     // await this.createToken(result)
+      return await this.createToken(result)
+      //return { message: 'SignInWith Email succeed'}
     }
     else {
       throw new UnauthorizedException()
