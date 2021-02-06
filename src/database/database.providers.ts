@@ -16,6 +16,7 @@ export const databaseProviders = [
         username: Config.database.username,
         password: Config.database.password,
         database: Config.database.database,
+        timezone: '+07:00'
       });
       sequelize.addModels([Product,Work,Status,Users,Token,Workflow]);
       await sequelize.sync();
