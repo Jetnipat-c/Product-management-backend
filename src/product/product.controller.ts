@@ -21,7 +21,7 @@ export class ProductController {
         return res.status(status).json(response);
     }
 
-    @Get('/timeline:product_id')
+    @Get('/timeline/:product_id')
     async timelineProduct(@Res() res, @Param('product_id') product_id: number){
         console.log(product_id)
         let status = HttpStatus.OK;
