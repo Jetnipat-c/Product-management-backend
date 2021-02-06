@@ -106,9 +106,15 @@ export class ProductService {
         let result =  await this.product.findOne({
             where: {product_id:productDto.product_id}
         })
+        
         if (result){
-          let final = await this.workflowService.create_timestamp_product(productDto.product_id,work_id)
-            return final
+            let check_work = await this.check_work_timeline(productDto.product_id,work_id)
+            if (check_work){
+                let final = await this.workflowService.create_timestamp_product(productDto.product_id,work_id)
+            return MESSAGE.CREATE_WORKFLOW_SUCCESSD
+            }
+            else return MESSAGE.CREATE_WORKFLOW_ERROR
+          
         }
         else
             return MESSAGE.CREATE_WORKFLOW_ERROR
@@ -138,6 +144,18 @@ export class ProductService {
         }
         else
             return MESSAGE.CREATE_WORKFLOW_ERROR
+    }
+
+    async check_work_timeline(product_id: any,work_id: any){
+        const result = await this.workflow.findOne({
+            where: { product_id: product_id,
+            work_id: work_id}
+        })
+        //console.log("result = ",result)
+        if(result != null){
+            return false
+        }
+        else return true
     }
 
 }
