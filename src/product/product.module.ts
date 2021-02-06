@@ -2,6 +2,8 @@ import { forwardRef, Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
 import { Config } from 'src/config/config';
 import { DatabaseModule } from 'src/database/database.module';
+import { Work } from 'src/work/entity/work.entity';
+import { workProviders } from 'src/work/entity/work.provider';
 import { workflowProviders } from 'src/workflow/entity/workflow.provider';
 import { WorkflowModule } from 'src/workflow/workflow.module';
 import { WorkflowService } from 'src/workflow/workflow.service';
@@ -17,7 +19,7 @@ import { ProductService } from './product.service';
     }),
   })],
   controllers: [ProductController],
-  providers: [ProductService,...productProviders,WorkflowService,...workflowProviders],
+  providers: [ProductService,...productProviders,WorkflowService,...workflowProviders,Work,...workProviders],
   exports: [ProductService]
 })
 export class ProductModule {}

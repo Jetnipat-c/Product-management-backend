@@ -12,6 +12,7 @@ export class ProductService {
     constructor(
     @Inject('PRODUCT_REPOSITORY') private product: typeof Product,
     @Inject('WORKFLOW_REPOSITORY') private workflow: typeof Workflow,
+    @Inject('WORK_REPOSITORY') private work: typeof Work,
     private readonly workflowService: WorkflowService
     ){}
     
@@ -39,7 +40,9 @@ export class ProductService {
 
     async createproduct(productDto: ProductDto){
         const work_id =  1
-        let result = await this.product.create(productDto)
+        const work = await this.work.findByPk(1)
+        if (work) {
+            let result = await this.product.create(productDto)
         //console.log('After create',result.dataValues)
         let workflow = await this.workflowService.create_timestamp_product(result.product_id,work_id)
         let product = await this.product.findOne({
@@ -70,6 +73,12 @@ export class ProductService {
         }
         await product.update(payload)
         return { pathfile: `product_${product.product_id}.jpg`}
+        }
+
+        else {
+            return MESSAGE.CREATE_PRODUCT_ERROR
+        }
+        
         //return { pathfile: `images/product/product_${product.product_id}.png`}
     }
 

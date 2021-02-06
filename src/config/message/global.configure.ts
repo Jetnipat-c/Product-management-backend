@@ -12,5 +12,6 @@ export enum MESSAGE {
     UPDATE_WORK_SUCCESS = <any>{ code: 9, message: 'Update work succeed.'},
     USERNAME_OR_PASSWORD_INCORRECT = <any>{ code: 10, message: 'Invalid username or password.'},
     SIGNUP_ERROR = <any>{ code: 11, message: 'Signup error.'},
-    CREATE_WORKFLOW_ERROR = <any>{ code: 12, message: `Create workflow error.`}
+    CREATE_WORKFLOW_ERROR = <any>{ code: 12, message: `Create workflow error.`},
+    CREATE_PRODUCT_ERROR = <any>{ code: 13, message: `Create product error.`}
   }

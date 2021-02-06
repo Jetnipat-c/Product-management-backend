@@ -8,7 +8,7 @@ export const Config = {
     port: 3306,
     username: 'root',
     password: '',
-    database: 'tsqr',
+    database: 'product_mgm',
   },
   email: {
     provider: {

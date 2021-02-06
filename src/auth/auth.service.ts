@@ -207,17 +207,17 @@ export class AuthService {
   // ###################################################################### SigninWithToken ######################################################################
   async signwithtoken(token: string){
     let status_token = await this.usersService.check_token(token)
-    console.log("status : ",status_token)
+    //console.log("status : ",status_token)
     if (!status_token) {
       throw new UnauthorizedException();
     }
     let user_from_token: any = await this.validateToken(token);
-    console.log("user from :",user_from_token)
+    //console.log("user from :",user_from_token)
     let user = await this.usersService.find_user_one({
       type: 'username',
       data: user_from_token.username
     })
-    console.log("user : ",user)
+    //console.log("user : ",user)
     const payload = {
       username: user.username,
       sub: user.userId,

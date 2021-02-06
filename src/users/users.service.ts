@@ -73,10 +73,11 @@ export class UsersService {
     return { message: 'Signout succeed'}
 }
   // ###################################################################### Check token ######################################################################
-  async check_token(access_token){
-    let token_user = await this.token.findOne({
-      where: {token: access_token}
+  async check_token(access_token: string){
+    let token_user = await this.token.findAll({
+      where: { token: access_token }
     })
-    return !token_user ? false : true
+    if (!token_user) return false;
+    return true;
   }
 }
